@@ -1,6 +1,18 @@
-"use client";
+import { useState, useEffect } from "react";
+import { FaArrowUp } from "react-icons/fa6";
 
-export default function ScrollToTopButton() {
+const ScrollToTopButton = () => {
+  const [isVisible, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -9,20 +21,18 @@ export default function ScrollToTopButton() {
   };
 
   return (
-    <button
-      onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-30 p-3 bg-transparent border-none cursor-pointer"
-      aria-label="Scroll to top"
-    >
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 20 10"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M12 4L4 12H20L12 4Z" fill="white" />
-      </svg>
-    </button>
+    <>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-10 right-4 md:right-20 z-10 p-2 bg-blue-800 text-white rounded-full shadow-md hover:bg-blue-900 transition-all duration-300"
+          aria-label="Scroll to top"
+        >
+          <FaArrowUp size={20} />
+        </button>
+      )}
+    </>
   );
-}
+};
+
+export default ScrollToTopButton;
