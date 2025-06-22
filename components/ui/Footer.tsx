@@ -48,7 +48,7 @@ const Footer = () => {
           className="text-sm text-center sm:text-right lg:ml-104 whitespace-nowrap overflow-visible"
           style={{ position: "relative", left: "auto" }}
         >
-          © 2025 Fitra Nur Ramadhani. All rights reserved.
+          © 2025 Al Fitra Nur Ramadhani. All rights reserved.
         </p>
       </div>
     </footer>
