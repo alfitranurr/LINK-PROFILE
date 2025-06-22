@@ -1,6 +1,10 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { HoverBorderGradient } from "@/components/ui/HoverBorderGradient";
 import { GridBackgroundDemo } from "@/components/ui/GridBackgroundDemo";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
+import Footer from "@/components/ui/Footer";
 import {
   FaInstagram,
   FaWhatsapp,
@@ -8,9 +12,16 @@ import {
   FaGithub,
   FaBriefcase,
 } from "react-icons/fa";
-import { SiNpm } from "react-icons/si"; // Using SiNpm as a placeholder for NGL, as NGL doesn't have a standard icon
+import { SiNpm } from "react-icons/si";
+import "animate.css";
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const socialLinks = [
     {
       name: "Portfolio",
@@ -37,26 +48,29 @@ export default function Home() {
       url: "https://github.com/alfitranurr",
       icon: <FaGithub />,
     },
-    { name: "NGL", url: "https://ngl.link/rmdhani_ii27833", icon: <SiNpm /> }, // Placeholder icon for NGL
+    { name: "NGL", url: "https://ngl.link/rmdhani_ii27833", icon: <SiNpm /> },
   ];
 
   return (
-    <main className="relative">
+    <main className="relative min-h-screen">
       <GridBackgroundDemo>
-        <div className="relative z-20 flex flex-col items-center gap-4 px-2 sm:px-4 md:px-10">
-          {socialLinks.map((link) => (
+        <div className="relative z-20 flex flex-col items-center justify-center gap-6 px-4 py-12">
+          {socialLinks.map((link, index) => (
             <a
               key={link.name}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full max-w-[750px]"
+              className={`animate__animated ${
+                isMounted ? "animate__fadeInUp" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               <HoverBorderGradient
-                containerClassName="rounded-full px-20 py-3 w-full md:min-w-[755px] flex items-center"
-                className="text-xl font-semibold flex items-center"
+                containerClassName="rounded-full px-10 sm:px-10 md:px-20 lg:px-32 py-2 w-[280px] sm:w-[400px] md:w-[700px] lg:w-[800px] xl:w-[900px] flex items-center justify-center"
+                className="text-base sm:text-lg md:text-xl font-semibold flex items-center justify-center"
               >
-                <span className="mr-2 text-2xl">{link.icon}</span>
+                <span className="mr-3 text-xl sm:text-2xl">{link.icon}</span>
                 {link.name}
               </HoverBorderGradient>
             </a>
@@ -64,6 +78,7 @@ export default function Home() {
         </div>
       </GridBackgroundDemo>
       <ScrollToTopButton />
+      <Footer />
     </main>
   );
 }
