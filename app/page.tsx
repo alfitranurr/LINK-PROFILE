@@ -57,7 +57,7 @@ export default function Home() {
       <div className="w-full bg-white py-6 shadow-md">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-xl sm:text-3xl font-bold text-gray-800">
-            Welcome to Al Fitra Nur R's Profile
+            Welcome to Al Fitra Nur R&apos;s Profile
           </h1>
           <p className="mt-2 text-sm sm:text-base text-gray-600">
             Connect with me through my social links below!
