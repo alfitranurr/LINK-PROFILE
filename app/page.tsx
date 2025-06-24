@@ -53,8 +53,19 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen">
+      {/* Full-width white box at the top */}
+      <div className="w-full bg-white py-6 shadow-md">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-xl sm:text-3xl font-bold text-gray-800">
+            Welcome to Al Fitra Nur R's Profile
+          </h1>
+          <p className="mt-2 text-sm sm:text-base text-gray-600">
+            Connect with me through my social links below!
+          </p>
+        </div>
+      </div>
       <GridBackgroundDemo>
-        <div className="relative z-20 flex flex-col items-center justify-center gap-6 px-4 py-12">
+        <div className="relative z-20 flex flex-col items-center justify-center gap-6 px-4 py-8">
           {socialLinks.map((link, index) => (
             <a
               key={link.name}
